@@ -1,0 +1,63 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:16-alpine:///linkedin_agent
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+  quartz:
+    job-store-type: memory
+
+  ai:
+    google:
+      genai:
+        api-key: test-gemini-key
+        chat:
+          options:
+            model: gemini-2.0-flash
+        embedding:
+          options:
+            model: text-embedding-004
+
+app:
+  env: test
+  secret-key: test-secret-key-minimum-32-characters-long
+  frontend-url: http://localhost:5173
+  backend-url: http://localhost:8080
+
+  jwt:
+    access-token-expiration: 900000
+    refresh-token-expiration: 604800000
+
+  supabase:
+    url: http://localhost:54321
+    service-key: test-service-key
+    storage-bucket: test-bucket
+
+  gemini:
+    api-key: test-gemini-key
+    model: gemini-2.0-flash
+    rpm-limit: 12
+    daily-limit: 1400
+
+  linkedin:
+    client-id: test-client-id
+    client-secret: test-client-secret
+    redirect-uri: http://localhost:8080/api/v1/auth/linkedin/callback
+
+  tavily:
+    api-key: test-tavily-key
+
+  encryption:
+    aes-key: test-32-char-aes-key-change-me!!
+
+logging:
+  level:
+    com.linkedinagent: WARN
