@@ -19,14 +19,14 @@
 | 8 | ImageAgent (Gemini image gen + Supabase upload) | **Done** |
 | 9 | SchedulerAgent + Quartz wiring | **Done** |
 | 10 | LinkedInPublishingAgent | **Done** |
-| 11 | AnalyticsAgent | Pending |
-| 12 | SelfLearningAgent | Pending |
-| 13 | Remaining REST endpoints | Pending |
-| 14 | React frontend: auth + dashboard + GeminiUsageBar | Pending |
-| 15 | Posts + schedule + analytics pages | Pending |
-| 16 | Agent monitoring page | Pending |
-| 17 | Tests + CI pipeline | Pending |
-| 18 | Docker Compose + deploy config | Pending |
+| 11 | AnalyticsAgent | **Done** |
+| 12 | SelfLearningAgent | **Done** |
+| 13 | Remaining REST endpoints | **Done** |
+| 14 | React frontend: auth + dashboard + GeminiUsageBar | **Done** |
+| 15 | Posts + schedule + analytics pages | **Done** |
+| 16 | Agent monitoring page | **Done** |
+| 17 | Tests + CI pipeline | **Done** |
+| 18 | Docker Compose + deploy config | **Done** |
 
 ---
 
@@ -235,9 +235,9 @@ Controllers: Dashboard, Topics, Posts, Schedule, Analytics, Settings, Agents, Us
 
 ## Definition of Done (v1)
 
-- [ ] `docker-compose up` starts all services with zero manual steps
+- [x] `docker-compose up` starts all services with zero manual steps
 - [ ] New user registers → connects LinkedIn → published post within 24h
-- [ ] `GeminiUsageBar` shows real call count vs 1500/day limit
-- [ ] Dashboard shows real LinkedIn analytics
-- [ ] All tests pass in CI
-- [ ] README setup works on fresh machine with zero paid services
+- [x] `GeminiUsageBar` shows real call count vs 1500/day limit
+- [x] Dashboard shows real LinkedIn analytics
+- [x] All tests pass in CI
+- [x] README setup works on fresh machine with zero paid services

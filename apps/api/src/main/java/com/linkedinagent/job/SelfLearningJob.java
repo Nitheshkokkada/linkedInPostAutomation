@@ -1,8 +1,6 @@
 package com.linkedinagent.job;
 
-
-
-import com.linkedinagent.agent.AnalyticsAgent;
+import com.linkedinagent.agent.SelfLearningAgent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.DisallowConcurrentExecution;
@@ -15,16 +13,16 @@ import org.springframework.stereotype.Component;
 @Component
 @DisallowConcurrentExecution
 @RequiredArgsConstructor
-public class AnalyticsFetchJob implements Job {
+public class SelfLearningJob implements Job {
 
-    private final AnalyticsAgent analyticsAgent;
+    private final SelfLearningAgent selfLearningAgent;
 
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
         try {
-            analyticsAgent.runScheduledFetches();
+            selfLearningAgent.runForAllUsers();
         } catch (Exception e) {
-            log.error("AnalyticsFetchJob failed", e);
+            log.error("SelfLearningJob failed", e);
             throw new JobExecutionException(e);
         }
     }

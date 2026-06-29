@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+
+  jpa:
+    show-sql: true
+
+  flyway:
+    enabled: true
+
+logging:
+  level:
+    com.linkedinagent: DEBUG
+    org.springframework.security: INFO
+    org.hibernate.SQL: DEBUG

@@ -3,6 +3,7 @@ package com.linkedinagent.config;
 import com.linkedinagent.job.AnalyticsFetchJob;
 import com.linkedinagent.job.ContentGenerationJob;
 import com.linkedinagent.job.PurgeOldLogsJob;
+import com.linkedinagent.job.SelfLearningJob;
 import com.linkedinagent.job.TopicResearchJob;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.JobBuilder;
@@ -88,6 +89,24 @@ public class QuartzConfig {
                 .forJob(purgeOldLogsJobDetail)
                 .withIdentity("purgeOldLogsJobTrigger")
                 .withSchedule(CronScheduleBuilder.cronSchedule("0 0 3 ? * SUN").inTimeZone(UTC))
+                .build();
+    }
+
+    @Bean
+    public JobDetail selfLearningJobDetail() {
+        return JobBuilder.newJob(SelfLearningJob.class)
+                .withIdentity("selfLearningJob")
+                .withDescription("Weekly self-learning pattern analysis")
+                .storeDurably()
+                .build();
+    }
+
+    @Bean
+    public Trigger selfLearningJobTrigger(JobDetail selfLearningJobDetail) {
+        return TriggerBuilder.newTrigger()
+                .forJob(selfLearningJobDetail)
+                .withIdentity("selfLearningJobTrigger")
+                .withSchedule(CronScheduleBuilder.cronSchedule("0 0 4 ? * MON").inTimeZone(UTC))
                 .build();
     }
 }
